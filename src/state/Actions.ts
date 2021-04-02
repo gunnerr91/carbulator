@@ -1,5 +1,5 @@
 import { ActionType } from "./ActionType";
-import { Item } from "./IItem";
+import { ItemJson } from "./ItemJson";
 
 interface SearchItemAction {
   type: ActionType.search_item;
@@ -7,7 +7,7 @@ interface SearchItemAction {
 
 interface SearchItemSuccess {
   type: ActionType.search_item_success;
-  payload: Item[];
+  payload: ItemJson[];
 }
 
 interface SearchItemError {

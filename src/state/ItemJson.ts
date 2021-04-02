@@ -1,4 +1,4 @@
-export interface Item {
+export interface ItemJson {
   sugar_g: number;
   fiber_g: number;
   serving_size_g: number;

@@ -13,12 +13,13 @@ export const searchForItem = (query: string) => {
       const { data } = await axios.get(
         "https://api.calorieninjas.com/v1/nutrition",
         {
+          headers: { "X-Api-Key": "SQRRZPfZEJvg84FmCONyuw==juU5XrsvEGDM7qYc" },
           params: {
             query
           }
         }
       );
-      const names = data.objects.map((result: any) => {
+      const names = data.items.map((result: any) => {
         return result.name;
       });
 

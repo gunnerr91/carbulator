@@ -1,11 +1,11 @@
 import { Action } from "../Actions";
 import { ActionType } from "../ActionType";
-import { Item } from "../IItem";
+import { ItemJson } from "../ItemJson";
 
 interface ItemState {
   loading: boolean;
   error: string | null;
-  data: Item[];
+  data: ItemJson[];
 }
 
 const initialState = {
