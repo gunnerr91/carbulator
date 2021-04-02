@@ -1,5 +1,12 @@
+import { Provider } from "react-redux";
+import { store } from "./state";
+
 function App() {
-  return <div className="App">doge approved</div>;
+  return (
+    <Provider store={store}>
+      <div className="App">doge approved</div>
+    </Provider>
+  );
 }
 
 export default App;
