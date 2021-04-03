@@ -2,6 +2,7 @@ import axios from "axios";
 import { Dispatch } from "redux";
 import { Action } from "../Actions";
 import { ActionType } from "../ActionType";
+import { ItemJson } from "../ItemJson";
 
 export const searchForItem = (query: string) => {
   return async (dispatch: Dispatch<Action>) => {
@@ -19,13 +20,11 @@ export const searchForItem = (query: string) => {
           }
         }
       );
-      const names = data.items.map((result: any) => {
-        return result.name;
-      });
-
+      const items: ItemJson[] = data.items;
+      console.log(items);
       dispatch({
         type: ActionType.search_item_success,
-        payload: names
+        payload: items
       });
     } catch (error) {
       dispatch({
