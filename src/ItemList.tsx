@@ -5,14 +5,15 @@ import { useTypedSelector } from "./hooks/useTypedSelector";
 const ItemList: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const { searchForItem } = useActions();
-  const { data, loading, error } = useTypedSelector((state) => state.items);
+  const { data, loading, error, totalCarbs } = useTypedSelector(
+    (state) => state.items
+  );
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     searchForItem(searchQuery);
     setSearchQuery("");
   };
-
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -44,6 +45,7 @@ const ItemList: React.FC = () => {
             </div>
           );
         })}
+      <div>Carb meter: {totalCarbs > 0 && totalCarbs}</div>
     </div>
   );
 };

@@ -6,12 +6,14 @@ interface ItemState {
   loading: boolean;
   error: string | null;
   data: ItemJson[];
+  totalCarbs: Number;
 }
 
 const initialState = {
   loading: false,
   error: null,
-  data: []
+  data: [],
+  totalCarbs: 0
 };
 
 const reducer = (
@@ -20,11 +22,22 @@ const reducer = (
 ): ItemState => {
   switch (action.type) {
     case ActionType.search_item:
-      return { loading: true, error: null, data: [] };
+      return { loading: true, error: null, data: [], totalCarbs: 0 };
     case ActionType.search_item_success:
-      return { loading: false, error: null, data: action.payload };
+      let data = action.payload;
+      let totalCarbs = data.reduce(
+        (accmulator, currentValue) =>
+          accmulator + currentValue.carbohydrates_total_g,
+        0
+      );
+      return {
+        loading: false,
+        error: null,
+        data,
+        totalCarbs
+      };
     case ActionType.search_item_error:
-      return { loading: false, error: action.payload, data: [] };
+      return { loading: false, error: action.payload, data: [], totalCarbs: 0 };
     default:
       return state;
   }
